@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <Version>1.0.0</Version>
+    <Authors>BriareosTM</Authors>
+    <Company>Cognitic/BStorm</Company>
+    <Description>Tools de base pour l'encryption AES, RSA et Hashage en SHA512</Description>
+    <Copyright>Morre Thierry</Copyright>
+  </PropertyGroup>
+
+</Project>
