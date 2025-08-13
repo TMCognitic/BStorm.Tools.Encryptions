@@ -1,7 +1,7 @@
 ﻿using System.Security.Cryptography;
 using System.Text;
 
-namespace BStorm.Tools.Encryptions.Hashhage
+namespace BStorm.Tools.Encryptions.Hashage
 {
     public static class StringExtensions
     {
