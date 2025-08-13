@@ -36,7 +36,7 @@ namespace BStorm.Tools.Encryptions.Cryptography.Symmetric
                     using (CryptoStream cryptoStream = new CryptoStream(memoryStream, aes.CreateEncryptor(), CryptoStreamMode.Write))
                     {
                         // Par défaut, Le StreamWriter utilise l'UTF-8.
-                        using (StreamWriter encryptWriter = new StreamWriter(cryptoStream, Encoding.Default))
+                        using (StreamWriter encryptWriter = new StreamWriter(cryptoStream, Encoding.Unicode))
                         {
                             encryptWriter.Write(text);
                         }
@@ -60,7 +60,7 @@ namespace BStorm.Tools.Encryptions.Cryptography.Symmetric
                     using (CryptoStream cryptoStream = new CryptoStream(memoryStream, aes.CreateDecryptor(), CryptoStreamMode.Read))
                     {
                         // Par défaut, Le StreamReader utilise l'UTF-8.
-                        using (StreamReader decryptWriter = new StreamReader(cryptoStream, Encoding.Default))
+                        using (StreamReader decryptWriter = new StreamReader(cryptoStream, Encoding.Unicode))
                         {
                             return decryptWriter.ReadToEndAsync().Result;
                         }

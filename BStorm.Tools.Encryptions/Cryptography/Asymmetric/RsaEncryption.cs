@@ -7,7 +7,7 @@ namespace BStorm.Tools.Encryptions.Cryptography.Asymmetric
     {
         private readonly RSACryptoServiceProvider _serviceProvider;
 
-        public RsaEncryption(in int keySize = 2048)
+        public RsaEncryption(in int keySize = 4096)
         {
             _serviceProvider = new RSACryptoServiceProvider(keySize);
         }

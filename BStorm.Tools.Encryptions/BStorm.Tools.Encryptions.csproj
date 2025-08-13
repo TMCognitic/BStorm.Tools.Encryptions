@@ -5,11 +5,12 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-    <Version>1.0.0</Version>
+    <Version>1.0.1</Version>
     <Authors>BriareosTM</Authors>
     <Company>Cognitic/BStorm</Company>
     <Description>Tools de base pour l'encryption AES, RSA et Hashage en SHA512</Description>
     <Copyright>Morre Thierry</Copyright>
+    <RepositoryUrl>https://github.com/TMCognitic/BStorm.Tools.Encryptions</RepositoryUrl>
   </PropertyGroup>
 
 </Project>

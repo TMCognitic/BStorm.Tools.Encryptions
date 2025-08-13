@@ -7,7 +7,8 @@ namespace BStorm.Tools.Encryptions.Hashhage
     {
         public static string Hash(this string s)
         {
-            byte[] bytes = Encoding.Default.GetBytes(s);
+            ArgumentNullException.ThrowIfNull(s, nameof(s));
+            byte[] bytes = Encoding.Unicode.GetBytes(s);
             byte[] result = SHA512.HashData(bytes);
             return Convert.ToBase64String(result);
         }
