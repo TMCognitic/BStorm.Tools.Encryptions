@@ -1,16 +1,14 @@
-﻿using System.Security.Cryptography;
-using System.Text;
+﻿using System.Text;
 
 namespace BStorm.Tools.Encryptions.Hashage
 {
     public static class StringExtensions
     {
-        public static string Hash(this string s)
+        public static byte[] Hash(this string s)
         {
             ArgumentNullException.ThrowIfNull(s, nameof(s));
             byte[] bytes = Encoding.Unicode.GetBytes(s);
-            byte[] result = SHA512.HashData(bytes);
-            return Convert.ToBase64String(result);
+            return bytes.Hash();
         }
     }
 }

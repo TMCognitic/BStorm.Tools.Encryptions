@@ -24,7 +24,7 @@ namespace BStorm.Tools.Encryptions.Cryptography.Symmetric
             _iv = iv;
         }
 
-        public string Encrypt(string text)
+        public byte[] Encrypt(string text)
         {
             using (Aes aes = Aes.Create())
             {
@@ -41,7 +41,7 @@ namespace BStorm.Tools.Encryptions.Cryptography.Symmetric
                             encryptWriter.Write(text);
                         }
 
-                        return Convert.ToBase64String(memoryStream.ToArray());
+                        return memoryStream.ToArray();
                     }
                 }
             }

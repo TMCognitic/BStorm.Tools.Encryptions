@@ -40,41 +40,41 @@ namespace BStorm.Tools.Encryptions.Cryptography.Asymmetric
             get { return _serviceProvider.PublicOnly; }
         }
 
-        public string ToPublicKeyPem()
+        public string ToPem(in bool includePrivateKey)
         {
-            return _serviceProvider.ExportRSAPublicKeyPem();
+            return includePrivateKey ? _serviceProvider.ExportRSAPrivateKeyPem() : _serviceProvider.ExportRSAPublicKeyPem();
         }
 
-        public string ToPrivateKeyPem()
-        {
-            return _serviceProvider.ExportRSAPrivateKeyPem();
-        }
-
-        public string ToXml(in bool includePrivateKey)
-        {
-            return _serviceProvider.ToXmlString(includePrivateKey);
-        }
-
-        public byte[] ToByteArray(in bool includePrivateKey)
-        {
+        public byte[] ToBlob(in bool includePrivateKey)
+        {            
             return _serviceProvider.ExportCspBlob(includePrivateKey);
         }
 
         public byte[] Encrypt(in string content)
-        {
-            if (content.Length > MaxContentSize)
-                throw new InvalidOperationException($"With the current key you can encrypt a string with max size : {MaxContentSize}");
-
+        {            
             byte[] toEncode = Encoding.Unicode.GetBytes(content);
-            return _serviceProvider.Encrypt(toEncode, true);
+            return Encrypt(toEncode);
         }
 
-        public string Decrypt(in byte[] cypher)
+        public byte[] Encrypt(in byte[] content)
+        {
+            if (content.Length > MaxContentSize)
+                throw new InvalidOperationException($"With the current key you can encrypt a content with max size in bytes : {MaxContentSize}");
+
+            return _serviceProvider.Encrypt(content, true);
+        }
+
+        public byte[] Decrypt(in byte[] cypher)
         {
             if (PublicKeyOnly)
                 throw new InvalidOperationException("Only the private key can decrypt.");
 
-            byte[] decodedData = _serviceProvider.Decrypt(cypher, true);
+            return _serviceProvider.Decrypt(cypher, true);
+        }
+
+        public string DecryptAsString(in byte[] cypher)
+        {
+            byte[] decodedData = Decrypt(cypher);
             return Encoding.Unicode.GetString(decodedData);
         }
     }
